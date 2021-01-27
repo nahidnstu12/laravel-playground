@@ -11,6 +11,18 @@
 |
 */
 
+Route::get('/register', function () {
+    return view('userSignUp.register');
+});
+Route::get('/login', function () {
+    return view('userSignUp.login');
+});
 Route::get('/', function () {
-    return view('welcome');
+    return view('userSignUp.userviewpage');
+});
+Route::get('/edit', function () {
+    return view('userSignUp.usereditpage');
+});
+Route::get('/acc', function () {
+    return view('userSignUp.accountsettingpage');
 });
