@@ -10,4 +10,8 @@ class Brand extends Model
     {
         return $this->belongsTo(Product::class);
     }
+    public function categories()
+    {
+        return $this->belongsToMany(Category::class);
+    }
 }
