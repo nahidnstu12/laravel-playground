@@ -17,6 +17,9 @@ Route::get('/register', function () {
 Route::get('/login', function () {
     return view('userSignUp.login');
 });
+Route::get('/forget', function () {
+    return view('userSignUp.forgetpassword');
+});
 Route::get('/', function () {
     return view('userSignUp.userviewpage');
 });
@@ -26,3 +29,4 @@ Route::get('/edit', function () {
 Route::get('/acc', function () {
     return view('userSignUp.accountsettingpage');
 });
+

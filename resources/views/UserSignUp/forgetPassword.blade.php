@@ -23,9 +23,10 @@
                             <div class="card-content">
                                 <div class="card-body">
                                     <form class="form-horizontal" action="login-simple.html" novalidate>
+                                        @csrf
                                         <fieldset class="form-group position-relative has-icon-left">
                                             <input type="email" class="form-control" id="user-email"
-                                                placeholder="Your Email Address" required>
+                                                placeholder="Your Email Address" required name="email">
                                             <div class="form-control-position">
                                                 <i class="la la-envelope"></i>
                                             </div>
@@ -37,11 +38,9 @@
                                 </div>
                             </div>
                             <div class="card-footer border-0">
-                                <p class="float-sm-left text-center"><a href="login-simple.html"
+                                <p class="float-sm-left text-center"><a href="{{ url('/login')}}"
                                         class="card-link">Login</a></p>
-                                <p class="float-sm-right text-center">New to Modern ? <a href="register-simple.html"
-                                        class="card-link">Create
-                                        Account</a></p>
+                                <p class="float-sm-right text-center">New to Modern ? <a href="{{ url('/register')}}" class="card-link">Create Account</a></p>
                             </div>
                         </div>
                     </div>

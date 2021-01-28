@@ -25,23 +25,31 @@
                             <div class="card-content">
                                 <div class="card-body">
                                     <form class="form-horizontal form-simple" action="index.html" novalidate>
+                                        @csrf
                                         <fieldset class="form-group position-relative has-icon-left mb-1">
                                             <input type="text" class="form-control form-control-lg input-lg"
-                                                id="user-name" placeholder="User Name">
+                                                id="user-name" placeholder="User Name" name="username">
                                             <div class="form-control-position">
                                                 <i class="la la-user"></i>
                                             </div>
                                         </fieldset>
                                         <fieldset class="form-group position-relative has-icon-left mb-1">
                                             <input type="email" class="form-control form-control-lg input-lg"
-                                                id="user-email" placeholder="Your Email Address" required>
+                                                id="user-email" placeholder="Your Email Address" required name="email">
                                             <div class="form-control-position">
                                                 <i class="la la-envelope"></i>
                                             </div>
                                         </fieldset>
                                         <fieldset class="form-group position-relative has-icon-left">
                                             <input type="password" class="form-control form-control-lg input-lg"
-                                                id="user-password" placeholder="Enter Password" required>
+                                                id="user-password" placeholder="Enter Password" required name="password">
+                                            <div class="form-control-position">
+                                                <i class="la la-key"></i>
+                                            </div>
+                                        </fieldset>
+                                        <fieldset class="form-group position-relative has-icon-left">
+                                            <input type="password" class="form-control form-control-lg input-lg"
+                                                id="user-password" placeholder="Confirm Password" required name="confirm_password">
                                             <div class="form-control-position">
                                                 <i class="la la-key"></i>
                                             </div>
@@ -50,7 +58,7 @@
                                                 class="ft-unlock"></i> Register</button>
                                     </form>
                                 </div>
-                                <p class="text-center">Already have an account ? <a href="login-simple.html"
+                                <p class="text-center">Already have an account ? <a href="{{ url('/login')}}"
                                         class="card-link">Login</a></p>
                             </div>
                         </div>

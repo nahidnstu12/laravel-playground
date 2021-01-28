@@ -21,15 +21,16 @@
                                 </div>
                                 <div class="card-content">
                                     <div class="card-body">
-                                        <form class="form-horizontal form-simple" action="index.html" novalidate>
+                                        <form class="form-horizontal form-simple" action="" novalidate>
+                                            @csrf
                                             <fieldset class="form-group position-relative has-icon-left mb-0">
-                                                <input type="text" class="form-control" id="user-name" placeholder="Your Username" required>
+                                                <input type="text" class="form-control" id="user-name" placeholder="Your Username Or Email" required name="username">
                                                 <div class="form-control-position">
                                                     <i class="la la-user"></i>
                                                 </div>
                                             </fieldset>
                                             <fieldset class="form-group position-relative has-icon-left">
-                                                <input type="password" class="form-control" id="user-password" placeholder="Enter Password" required>
+                                                <input type="password" class="form-control" id="user-password" placeholder="Enter Password" required name="password">
                                                 <div class="form-control-position">
                                                     <i class="la la-key"></i>
                                                 </div>
@@ -41,7 +42,7 @@
                                                         <label for="remember-me"> Remember Me</label>
                                                     </fieldset>
                                                 </div>
-                                                <div class="col-sm-6 col-12 text-center text-sm-right"><a href="recover-password.html" class="card-link">Forgot Password?</a></div>
+                                                <div class="col-sm-6 col-12 text-center text-sm-right"><a href="{{ url('/forget')}}" class="card-link">Forgot Password?</a></div>
                                             </div>
                                             <button type="submit" class="btn btn-info btn-block"><i class="ft-unlock"></i> Login</button>
                                         </form>
@@ -49,9 +50,9 @@
                                 </div>
                                 <div class="card-footer">
                                     <div class="">
-                                        <p class="float-xl-left text-center m-0"><a href="recover-password.html" class="card-link">Recover
+                                        <p class="float-xl-left text-center m-0"><a href="{{ url('/forget')}}" class="card-link">Recover
                                                 password</a></p>
-                                        <p class="float-xl-right text-center m-0">New to Moden Admin? <a href="register-simple.html" class="card-link">Sign Up</a></p>
+                                        <p class="float-xl-right text-center m-0">New to Moden Admin? <a href="{{ url('/register')}}" class="card-link">Sign Up</a></p>
                                     </div>
                                 </div>
                             </div>

@@ -5,6 +5,8 @@
         <div class="app-content content">
             <div class="content-overlay"></div>
             <div class="content-wrapper">
+                {{-- header --}}
+                @include('usersignup.header')
                 <div class="content-header row">
                 </div>
                 <div class="content-body">
@@ -27,7 +29,7 @@
                             <div class="col-12 col-sm-5 px-0 d-flex justify-content-end align-items-center px-1 mb-2">
                                 <a href="#" class="btn btn-sm mr-25 border"><i class="ft-message-square font-small-3"></i></a>
                                 <a href="#" class="btn btn-sm mr-25 border">Profile</a>
-                                <a href="../../../html/ltr/vertical-menu-template/page-users-edit.html" class="btn btn-sm btn-primary">Edit</a>
+                                <a href="{{ url('/edit')}}" class="btn btn-sm btn-primary">Edit</a>
                             </div>
                         </div>
                         <!-- users view media object ends -->
