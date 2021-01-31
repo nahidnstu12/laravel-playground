@@ -7,6 +7,9 @@
 <div class="app-content content">
     <div class="content-overlay"></div>
     <div class="content-wrapper">
+
+        @include('usersignup.header')
+
         <div class="content-header row">
         </div>
         <div class="content-body">
@@ -24,36 +27,62 @@
                             </div>
                             <div class="card-content">
                                 <div class="card-body">
-                                    <form class="form-horizontal form-simple" action="index.html" novalidate>
+                                    
+                                    {{-- {{!! session('status') !!}} --}}
+                                  
+                                    <form class="form-horizontal form-simple" action="{{ route('register')}}"
+                                        method="POST" novalidate>
                                         @csrf
                                         <fieldset class="form-group position-relative has-icon-left mb-1">
-                                            <input type="text" class="form-control form-control-lg input-lg"
-                                                id="user-name" placeholder="User Name" name="username">
+                                            <input type="text"
+                                                class="form-control form-control-lg input-lg @error('name') is-invalid @enderror"
+                                                value="{{ old('name')}}" id="user-name" placeholder="User Name"
+                                                name="name">
                                             <div class="form-control-position">
                                                 <i class="la la-user"></i>
                                             </div>
+                                            @error('name')
+                                            <span class="invalid-feedback" role="alert"><strong>{{ $message}}</strong>
+                                            </span>
+                                            @enderror
                                         </fieldset>
+
                                         <fieldset class="form-group position-relative has-icon-left mb-1">
-                                            <input type="email" class="form-control form-control-lg input-lg"
-                                                id="user-email" placeholder="Your Email Address" required name="email">
+                                            <input type="email"
+                                                class="form-control form-control-lg input-lg @error('email') is-invalid @enderror"
+                                                id="user-email" placeholder="Your Email Address" required name="email"
+                                                value="{{ old('email')}}">
                                             <div class="form-control-position">
                                                 <i class="la la-envelope"></i>
                                             </div>
+                                            @error('email')
+                                            <span class="invalid-feedback" role="alert"><strong>{{ $message}}</strong>
+                                            </span>
+                                            @enderror
                                         </fieldset>
                                         <fieldset class="form-group position-relative has-icon-left">
-                                            <input type="password" class="form-control form-control-lg input-lg"
-                                                id="user-password" placeholder="Enter Password" required name="password">
+                                            <input type="password"
+                                                class="form-control form-control-lg input-lg @error('password') is-invalid @enderror"
+                                                id="user-password" placeholder="Enter Password" required
+                                                name="password">
                                             <div class="form-control-position">
                                                 <i class="la la-key"></i>
                                             </div>
+                                            @error('password')
+                                            <span class="invalid-feedback" role="alert"><strong>{{ $message}}</strong>
+                                            </span>
+                                            @enderror
                                         </fieldset>
                                         <fieldset class="form-group position-relative has-icon-left">
-                                            <input type="password" class="form-control form-control-lg input-lg"
-                                                id="user-password" placeholder="Confirm Password" required name="confirm_password">
+                                            <input type="password" class="form-control form-control-lg input-lg "
+                                                id="confirm-password" placeholder="Confirm Password" required
+                                                name="password_confirmation">
                                             <div class="form-control-position">
                                                 <i class="la la-key"></i>
                                             </div>
+
                                         </fieldset>
+
                                         <button type="submit" class="btn btn-info btn-lg btn-block"><i
                                                 class="ft-unlock"></i> Register</button>
                                     </form>

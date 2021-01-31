@@ -5,6 +5,7 @@
      <div class="app-content content">
         <div class="content-overlay"></div>
         <div class="content-wrapper">
+            @include('usersignup.header')
             <div class="content-header row">
             </div>
             <div class="content-body">
@@ -21,24 +22,33 @@
                                 </div>
                                 <div class="card-content">
                                     <div class="card-body">
-                                        <form class="form-horizontal form-simple" action="" novalidate>
+                                       {{ session('status')}}
+                                        <form class="form-horizontal form-simple" action="{{url('/login')}}" method="POST" novalidate>
                                             @csrf
                                             <fieldset class="form-group position-relative has-icon-left mb-0">
-                                                <input type="text" class="form-control" id="user-name" placeholder="Your Username Or Email" required name="username">
+                                                <input type="text" class="form-control  @error('email') is-invalid @enderror" id="user-name" placeholder="Your Email" required name="email">
                                                 <div class="form-control-position">
                                                     <i class="la la-user"></i>
                                                 </div>
+                                                @error('email')
+                                                <span class="invalid-feedback" role="alert"><strong>{{ $message}}</strong>
+                                                </span>
+                                                @enderror
                                             </fieldset>
                                             <fieldset class="form-group position-relative has-icon-left">
-                                                <input type="password" class="form-control" id="user-password" placeholder="Enter Password" required name="password">
+                                                <input type="password" class="form-control  @error('password') is-invalid @enderror" id="user-password" placeholder="Enter Password" required name="password">
                                                 <div class="form-control-position">
                                                     <i class="la la-key"></i>
                                                 </div>
+                                                @error('password')
+                                                <span class="invalid-feedback" role="alert"><strong>{{ $message}}</strong>
+                                                </span>
+                                                @enderror
                                             </fieldset>
                                             <div class="form-group row">
                                                 <div class="col-sm-6 col-12 text-center text-sm-left">
                                                     <fieldset>
-                                                        <input type="checkbox" id="remember-me" class="chk-remember">
+                                                        <input type="checkbox" id="remember-me" class="chk-remember" name="remember">
                                                         <label for="remember-me"> Remember Me</label>
                                                     </fieldset>
                                                 </div>
@@ -64,4 +74,11 @@
         </div>
     </div>
     <!-- END: Content-->
+    <script>
+        @if(session('status'))
+        // toastr.success("{!! session('status') !!}")
+        alert("{!! session('status') !!}");
+        @endif
+        
+    </script>
 @endsection

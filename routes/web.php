@@ -11,22 +11,23 @@
 |
 */
 
-Route::get('/register', function () {
-    return view('userSignUp.register');
-});
-Route::get('/login', function () {
-    return view('userSignUp.login');
-});
-Route::get('/forget', function () {
-    return view('userSignUp.forgetpassword');
-});
-Route::get('/', function () {
-    return view('userSignUp.userviewpage');
-});
-Route::get('/edit', function () {
-    return view('userSignUp.usereditpage');
-});
-Route::get('/acc', function () {
-    return view('userSignUp.accountsettingpage');
+// show register & login page
+Route::get('/register', 'RegisterController@show')->name('register')->middleware('guest');
+Route::get('/login','LoginController@show')->name('login')->middleware('guest');
+Route::get('/forget','LoginController@forgetpass')->name('forget')->middleware('guest');
+
+// register & login user
+Route::post('/login', 'LoginController@authenticate');
+Route::post('/register', 'RegisterController@register');
+Route::post('/forget','LoginController@forgetpass');
+
+// Protected Routes - allows only logged in users
+Route::middleware('auth')->group(function () {
+   
+    Route::get('/edit-user', 'UserDashboardController@editUser');
+    Route::get('/account-settings', 'UserDashboardController@accountSetting');
+    Route::post('/logout', 'LoginController@logout')->name('logout.me');
+    Route::get('/', 'UserDashboardController@index')->name('userdashboard'); //userviewpage
+    
 });
 

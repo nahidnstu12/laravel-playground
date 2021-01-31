@@ -6,14 +6,14 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Laravel-Playground</title>
     {{-- CSS Files --}}
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i%7CQuicksand:300,400,500,700" rel="stylesheet">
+    {{-- <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i%7CQuicksand:300,400,500,700" rel="stylesheet"> --}}
     {{-- vendor css --}}
     <link rel="stylesheet" type="text/css" href="{{URL::asset('vendors/css/vendors.min.css')}}">
     <link rel="stylesheet" type="text/css" href="{{URL::asset('vendors/css/plugins/select2.min.css')}}">
     <link rel="stylesheet" type="text/css" href="{{URL::asset('vendors/css/plugins/pickadate.css')}}">
     <link rel="stylesheet" type="text/css" href="{{URL::asset('vendors/css/plugins/switchery.min.css')}}">
-    {{-- <link rel="stylesheet" type="text/css" href="{{URL::asset('vendors/css/plugins/photoswipe.css')}}"> --}}
-    {{-- <link rel="stylesheet" type="text/css" href="{{URL::asset('vendors/css/plugins/default-skin.css')}}"> --}}
+    <link rel="stylesheet" type="text/css" href="{{URL::asset('vendors/css/plugins/photoswipe.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{URL::asset('vendors/css/plugins/default-skin.css')}}">
 
     {{-- bootstrap css --}}
     <link rel="stylesheet" type="text/css" href="{{URL::asset('css/bootstrap.min.css')}}">
@@ -30,7 +30,9 @@
    {{-- plugin css --}}
    <link rel="stylesheet" type="text/css" href="{{URL::asset('css/plugins/form-validation.min.css')}}">
    <link rel="stylesheet" type="text/css" href="{{URL::asset('css/plugins/daterange.min.css')}}">
-
+   <link href="{{ asset('css/toastr.css') }}" rel="stylesheet">
+   
+   
    
 </head>
 <body>
@@ -56,6 +58,14 @@
     <script src="{{URL::asset('js/scripts/form-login-register.min.js')}}"></script>
     <script src="{{URL::asset('js/scripts/account-setting.min.js')}}"></script>
     {{-- <script src="{{URL::asset('js/scripts/photoswipe-script.js')}}"></script> --}}
+
+    {{-- toastr js --}}
+    {{-- <script src="https://code.jquery.com/jquery-3.3.1.js"
+    integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script> --}}
+
+    {{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js" integrity="sha512-VEd+nq25CkR676O+pLBnDW09R7VQX9Mdiij052gVCp5yVH3jGtH70Ho/UUv4mJDsEdTvqRCFZg0NKGiojGnUCw==" crossorigin="anonymous"></script> --}}
+   
+    <script src="{{ asset('js/app.js') }}"></script>
    
 </body>
 </html>

@@ -5,6 +5,7 @@
 <div class="app-content content">
     <div class="content-overlay"></div>
     <div class="content-wrapper">
+        @include('usersignup.header')
         <div class="content-header row">
         </div>
         <div class="content-body">
