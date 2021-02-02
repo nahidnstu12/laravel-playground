@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateBrandsTable extends Migration
+class AddUserPhoneToUsers extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,10 @@ class CreateBrandsTable extends Migration
      */
     public function up()
     {
-        Schema::dropIfExists('brands');
-        Schema::create('brands', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->string('brand_name')->nullable();
-            $table->string('description')->nullable();
+        Schema::table('users', function (Blueprint $table) {
+            $table->string('phone_no')->after('email')->nullable();
+            $table->string('role_type')->default('0');
             $table->integer('status')->nullable()->comment('1=active;2=block');
-            $table->timestamps();
         });
     }
 
@@ -30,6 +27,8 @@ class CreateBrandsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('brands');
+        Schema::table('users', function (Blueprint $table) {
+            $table->dropColumn(['phone_no','role_type','status']);
+        });
     }
 }

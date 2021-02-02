@@ -37,6 +37,8 @@
                 @guest
                 <a class="dropdown-item" href="{{ url('/login')}}">Login</a>
                 <a class="dropdown-item" href="{{ url('/register')}}">Register</a>
+                <a class="dropdown-item" href="{{ url('/login/mauth')}}">Login-MAuth</a>
+                <a class="dropdown-item" href="{{ url('/register/mauth')}}">Register-MAuth</a>
                 @endguest
             </div>
         </div>

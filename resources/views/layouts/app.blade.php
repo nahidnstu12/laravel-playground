@@ -14,6 +14,7 @@
     <link rel="stylesheet" type="text/css" href="{{URL::asset('vendors/css/plugins/switchery.min.css')}}">
     <link rel="stylesheet" type="text/css" href="{{URL::asset('vendors/css/plugins/photoswipe.css')}}">
     <link rel="stylesheet" type="text/css" href="{{URL::asset('vendors/css/plugins/default-skin.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{URL::asset('vendors/css/plugins/datatales.min.css')}}">
 
     {{-- bootstrap css --}}
     <link rel="stylesheet" type="text/css" href="{{URL::asset('css/bootstrap.min.css')}}">
@@ -47,6 +48,10 @@
     <script src="{{URL::asset('vendors/js/plugins/picker.js')}}"></script>
     <script src="{{URL::asset('vendors/js/plugins/picker.date.js')}}"></script>
     <script src="{{URL::asset('vendors/js/plugins/switchery.min.js')}}"></script>
+    <script src="{{URL::asset('vendors/js/plugins/datatables.min.js')}}"></script>
+    <script src="{{URL::asset('vendors/js/plugins/list.min.js')}}"></script>
+    <script src="{{URL::asset('vendors/js/plugins/list.fuzzysearch.min.js')}}"></script>
+    <script src="{{URL::asset('vendors/js/plugins/list.pagination.min.js')}}"></script>
     {{-- <script src="{{URL::asset('vendors/js/plugins/photoswipe.min.js')}}"></script> --}}
     {{-- <script src="{{URL::asset('vendors/js/plugins/photoswipe-ui-default.min.js')}}"></script> --}}
 
@@ -57,6 +62,8 @@
     {{-- scripts --}}
     <script src="{{URL::asset('js/scripts/form-login-register.min.js')}}"></script>
     <script src="{{URL::asset('js/scripts/account-setting.min.js')}}"></script>
+    <script src="{{URL::asset('js/scripts/page-users.min.js')}}"></script>
+    <script src="{{URL::asset('js/scripts/list.min.js')}}"></script>
     {{-- <script src="{{URL::asset('js/scripts/photoswipe-script.js')}}"></script> --}}
 
     {{-- toastr js --}}
