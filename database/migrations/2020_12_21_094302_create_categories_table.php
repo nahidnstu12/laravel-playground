@@ -13,10 +13,10 @@ class CreateCategoriesTable extends Migration
      */
     public function up()
     {
-        
+        Schema::dropIfExists('categories');
         Schema::create('categories', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('name')->nullable();
+            $table->string('category_name')->nullable();
             $table->string('description')->nullable();
             $table->integer('status')->nullable()->comment('1=active;2=block');
             $table->timestamps();
