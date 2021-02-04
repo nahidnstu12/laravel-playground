@@ -5,35 +5,9 @@
 <div class="app-content content">
     <div class="content-overlay"></div>
     <div class="content-wrapper">
-        <div class="content-header row">
-            <div class="content-header-left col-md-6 col-12 mb-2">
-                <h3 class="content-header-title">Account setting</h3>
-                <div class="row breadcrumbs-top">
-                    <div class="breadcrumb-wrapper col-12">
-                        <ol class="breadcrumb" style="background: #E0E0E0;padding:10px">
-                            <li class="breadcrumb-item"><a href="index.html">Home</a>
-                            </li>
-                            <li class="breadcrumb-item"><a href="#">Pages</a>
-                            </li>
-                            <li class="breadcrumb-item active">Account setting
-                            </li>
-                        </ol>
-                    </div>
-                </div>
-            </div>
-            <div class="content-header-right col-md-6 col-12">
-                <div class="btn-group float-md-right" role="group" aria-label="Button group with nested dropdown">
-                    <button class="btn btn-info round dropdown-toggle dropdown-menu-right box-shadow-2 px-2 mb-1"
-                        id="btnGroupDrop1" type="button" data-toggle="dropdown" aria-haspopup="true"
-                        aria-expanded="false"><i class="ft-settings icon-left"></i> Settings</button>
-                    <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
-                        <a class="dropdown-item" href="card-bootstrap.html">Edit User</a>
-                        <a class="dropdown-item" href="component-buttons-extended.html">View User</a>
-                        <a class="dropdown-item" href="card-bootstrap.html">LogOut</a>
-                    </div>
-                </div>
-            </div>
-        </div>
+        {{-- header --}}
+        @include('usersignup.header')
+
         <div class="content-body">
             <!-- account setting page start -->
             <section id="page-account-settings">
@@ -53,6 +27,13 @@
                                     href="#account-vertical-password" aria-expanded="false">
                                     <i class="ft-lock mr-50"></i>
                                     Change Password
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link d-flex" id="account-pill-gallary" data-toggle="pill"
+                                    href="#account-vertical-gallary" aria-expanded="false">
+                                    <i class="la la-image mr-50"></i>
+                                    Image Gallary
                                 </a>
                             </li>
                             <li class="nav-item">
@@ -107,10 +88,9 @@
                                                         <input type="file" id="account-upload" hidden>
                                                         <button class="btn btn-sm btn-secondary ml-50">Reset</button>
                                                     </div>
-                                                    <p class="text-muted ml-75 mt-50"><small>Allowed JPG, GIF or PNG.
-                                                            Max
-                                                            size of
-                                                            800kB</small></p>
+                                                    <p class="text-muted ml-75 mt-50"><small>Allowed JPG, GIF or PNG.Max
+                                                            size of 800kB</small>
+                                                    </p>
                                                 </div>
                                             </div>
                                             <hr>
@@ -231,6 +211,176 @@
                                                 </div>
                                             </form>
                                         </div>
+                                        <div class="tab-pane fade" id="account-vertical-gallary" role="tabpanel"
+                                            aria-labelledby="account-pill-gallary" aria-expanded="false">
+                                            <form novalidate>
+                                                <div class="row">
+                                                    <!-- Image grid -->
+                                                    <section id="image-gallery" class="card">
+                                                        <div class="card-header">
+                                                            <h4 class="card-title">Image gallery</h4>
+                                                            <a class="heading-elements-toggle"><i
+                                                                    class="la la-ellipsis-v font-medium-3"></i></a>
+                                                            <div class="heading-elements">
+                                                                <ul class="list-inline mb-0">
+                                                                    <li><a data-action="collapse"><i
+                                                                                class="ft-minus"></i></a></li>
+                                                                    <li><a data-action="reload"><i
+                                                                                class="ft-rotate-cw"></i></a></li>
+                                                                    <li><a data-action="expand"><i
+                                                                                class="ft-maximize"></i></a></li>
+                                                                    <li><a data-action="close"><i class="ft-x"></i></a>
+                                                                    </li>
+                                                                </ul>
+                                                            </div>
+                                                        </div>
+                                                        <div class="card-content collapse show">
+                                                            <div class="card-body">
+                                                                <div class="card-text">
+                                                                    <p>Image gallery grid with photo-swipe integration.
+                                                                        Display images gallery in 4-2-1 columns and
+                                                                        photo-swipe provides gallery features.</p>
+                                                                </div>
+                                                            </div>
+                                                            <div class="card-body  my-gallery" itemscope
+                                                                itemtype="http://schema.org/ImageGallery">
+                                                                <div class="row">
+                                                                    <figure class="col-lg-3 col-md-6 col-12"
+                                                                        itemprop="associatedMedia" itemscope
+                                                                        itemtype="http://schema.org/ImageObject">
+                                                                        <a href="images/mail-chimp.png"
+                                                                            itemprop="contentUrl" data-size="480x360">
+                                                                            <img class="img-thumbnail img-fluid"
+                                                                                src="images/mail-chimp.png"
+                                                                                itemprop="thumbnail"
+                                                                                alt="Image description" />
+                                                                        </a>
+                                                                    </figure>
+                                                                    <figure class="col-lg-3 col-md-6 col-12"
+                                                                        itemprop="associatedMedia" itemscope
+                                                                        itemtype="http://schema.org/ImageObject">
+                                                                        <a href="images/38.png" itemprop="contentUrl"
+                                                                            data-size="480x360">
+                                                                            <img class="img-thumbnail img-fluid"
+                                                                                src="images/38.png" itemprop="thumbnail"
+                                                                                alt="Image description" />
+                                                                        </a>
+                                                                    </figure>
+                                                                    <figure class="col-lg-3 col-md-6 col-12"
+                                                                        itemprop="associatedMedia" itemscope
+                                                                        itemtype="http://schema.org/ImageObject">
+                                                                        <a href="images/38.png" itemprop="contentUrl"
+                                                                            data-size="480x360">
+                                                                            <img class="img-thumbnail img-fluid"
+                                                                                src="images/38.png" itemprop="thumbnail"
+                                                                                alt="Image description" />
+                                                                        </a>
+                                                                    </figure>
+                                                                    <figure class="col-lg-3 col-md-6 col-12"
+                                                                        itemprop="associatedMedia" itemscope
+                                                                        itemtype="http://schema.org/ImageObject">
+                                                                        <a href="images/38.png" itemprop="contentUrl"
+                                                                            data-size="480x360">
+                                                                            <img class="img-thumbnail img-fluid"
+                                                                                src="images/38.png" itemprop="thumbnail"
+                                                                                alt="Image description" />
+                                                                        </a>
+                                                                    </figure>
+                                                                </div>
+                                                                <div class="row">
+                                                                    <figure class="col-lg-3 col-md-6 col-12"
+                                                                        itemprop="associatedMedia" itemscope
+                                                                        itemtype="http://schema.org/ImageObject">
+                                                                        <a href="images/41.png" itemprop="contentUrl"
+                                                                            data-size="480x360">
+                                                                            <img class="img-thumbnail img-fluid"
+                                                                                src="images/41.png" itemprop="thumbnail"
+                                                                                alt="Image description" />
+                                                                        </a>
+                                                                    </figure>
+                                                                    <figure class="col-lg-3 col-md-6 col-12"
+                                                                        itemprop="associatedMedia" itemscope
+                                                                        itemtype="http://schema.org/ImageObject">
+                                                                        <a href="images/41.png" itemprop="contentUrl"
+                                                                            data-size="480x360">
+                                                                            <img class="img-thumbnail img-fluid"
+                                                                                src="images/41.png" itemprop="thumbnail"
+                                                                                alt="Image description" />
+                                                                        </a>
+                                                                    </figure>
+                                                                    <figure class="col-lg-3 col-md-6 col-12"
+                                                                        itemprop="associatedMedia" itemscope
+                                                                        itemtype="http://schema.org/ImageObject">
+                                                                        <a href="images/41.png" itemprop="contentUrl"
+                                                                            data-size="480x360">
+                                                                            <img class="img-thumbnail img-fluid"
+                                                                                src="images/41.png" itemprop="thumbnail"
+                                                                                alt="Image description" />
+                                                                        </a>
+                                                                    </figure>
+                                                                    <figure class="col-lg-3 col-md-6 col-12"
+                                                                        itemprop="associatedMedia" itemscope
+                                                                        itemtype="http://schema.org/ImageObject">
+                                                                        <a href="../../../app-assets/images/gallery/8.jpg"
+                                                                            itemprop="contentUrl" data-size="480x360">
+                                                                            <img class="img-thumbnail img-fluid"
+                                                                                src="images/41.png" itemprop="thumbnail"
+                                                                                alt="Image description" />
+                                                                        </a>
+                                                                    </figure>
+                                                                </div>
+                                                                <div class="row">
+                                                                    <figure class="col-lg-3 col-md-6 col-12"
+                                                                        itemprop="associatedMedia" itemscope
+                                                                        itemtype="http://schema.org/ImageObject">
+                                                                        <a href="../../../app-assets/images/gallery/9.jpg"
+                                                                            itemprop="contentUrl" data-size="480x360">
+                                                                            <img class="img-thumbnail img-fluid"
+                                                                                src="images/41.png" itemprop="thumbnail"
+                                                                                alt="Image description" />
+                                                                        </a>
+                                                                    </figure>
+                                                                    <figure class="col-lg-3 col-md-6 col-12"
+                                                                        itemprop="associatedMedia" itemscope
+                                                                        itemtype="http://schema.org/ImageObject">
+                                                                        <a href="../../../app-assets/images/gallery/10.jpg"
+                                                                            itemprop="contentUrl" data-size="480x360">
+                                                                            <img class="img-thumbnail img-fluid"
+                                                                                src="images/41.png" itemprop="thumbnail"
+                                                                                alt="Image description" />
+                                                                        </a>
+                                                                    </figure>
+                                                                    {{-- <figure class="col-lg-3 col-md-6 col-12"
+                                                                        itemprop="associatedMedia" itemscope
+                                                                        itemtype="http://schema.org/ImageObject">
+                                                                        <a href="../../../app-assets/images/gallery/11.jpg"
+                                                                            itemprop="contentUrl" data-size="480x360">
+                                                                            <img class="img-thumbnail img-fluid"
+                                                                                src="../../../app-assets/images/gallery/11.jpg"
+                                                                                itemprop="thumbnail"
+                                                                                alt="Image description" />
+                                                                        </a>
+                                                                    </figure>
+                                                                    <figure class="col-lg-3 col-md-6 col-12"
+                                                                        itemprop="associatedMedia" itemscope
+                                                                        itemtype="http://schema.org/ImageObject">
+                                                                        <a href="../../../app-assets/images/gallery/12.jpg"
+                                                                            itemprop="contentUrl" data-size="480x360">
+                                                                            <img class="img-thumbnail img-fluid"
+                                                                                src="../../../app-assets/images/gallery/12.jpg"
+                                                                                itemprop="thumbnail"
+                                                                                alt="Image description" />
+                                                                        </a>
+                                                                    </figure>
+                                                                </div>
+                                                                            --}}
+                                                                </div>
+                                                                <!--/ Image grid -->
+                                                        </div>
+                                                    </section>
+                                                </div>
+                                            </form>
+                                        </div>
                                         <div class="tab-pane fade" id="account-vertical-info" role="tabpanel"
                                             aria-labelledby="account-pill-info" aria-expanded="false">
                                             <form novalidate>
@@ -249,7 +399,8 @@
                                                                 <input type="text" class="form-control birthdate-picker"
                                                                     required placeholder="Birth date"
                                                                     id="account-birth-date"
-                                                                    data-validation-required-message="This birthdate field is required">
+                                                                    data-validation-required-message="This birthdate field is required"
+                                                                    style="background: #E0E0E0">
                                                             </div>
                                                         </div>
                                                     </div>

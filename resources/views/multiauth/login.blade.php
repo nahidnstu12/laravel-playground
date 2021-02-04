@@ -15,15 +15,15 @@
                             <div class="card border-grey border-lighten-3 m-0">
                                 <div class="card-header border-0">
                                     <div class="card-title text-center">
-                                        <div class="p-1"><img src="images/logo-shop.png" alt="branding logo"></div>
+                                        <div class="p-1"><img src={{asset("images/logo-shop.png")}} alt="branding logo"></div>
                                     </div>
-                                    <h6 class="card-subtitle line-on-side text-muted text-center font-small-3 pt-2"><span>Login with Modern</span>
+                                    <h6 class="card-subtitle line-on-side text-muted text-center font-small-3 pt-2"><span>Login with Modern-MAuth</span>
                                     </h6>
                                 </div>
                                 <div class="card-content">
                                     <div class="card-body">
                                        {{ session('status')}}
-                                        <form class="form-horizontal form-simple" action="{{url('/login')}}" method="POST" novalidate>
+                                        <form class="form-horizontal form-simple" action="{{url('/login/mauth')}}" method="POST" novalidate>
                                             @csrf
                                             <fieldset class="form-group position-relative has-icon-left mb-0">
                                                 <input type="text" class="form-control  @error('email') is-invalid @enderror" id="user-name" placeholder="Your Email" required name="email">
@@ -62,7 +62,7 @@
                                     <div class="">
                                         <p class="float-xl-left text-center m-0"><a href="{{ url('/forget')}}" class="card-link">Recover
                                                 password</a></p>
-                                        <p class="float-xl-right text-center m-0">New to Moden Admin? <a href="{{ url('/register')}}" class="card-link">Sign Up</a></p>
+                                        <p class="float-xl-right text-center m-0">New to Moden Admin? <a href="{{ route('register.mauth')}}" class="card-link">Sign Up</a></p>
                                     </div>
                                 </div>
                             </div>

@@ -11,18 +11,43 @@
 |
 */
 
-Route::get('/register', function () {
-    return view('userSignUp.register');
+// Single-auth-routes
+// show register & login page
+Route::get('/register', 'RegisterController@show')->name('register')->middleware('guest');
+Route::get('/login','LoginController@show')->name('login')->middleware('guest');
+Route::get('/forget','LoginController@forgetpass')->name('forget')->middleware('guest');
+
+// register & login user
+Route::post('/login', 'LoginController@authenticate');
+Route::post('/register', 'RegisterController@register');
+Route::post('/forget','LoginController@forgetpass');
+
+// Protected Routes - allows only logged in users
+Route::middleware('auth')->group(function () {
+   
+    Route::get('/edit-user', 'UserDashboardController@editUser');
+    Route::get('/account-settings', 'UserDashboardController@accountSetting');
+    Route::post('/logout', 'LoginController@logout')->name('logout.me');
+    Route::get('/', 'UserDashboardController@index')->name('userdashboard'); //userviewpage
+    
 });
-Route::get('/login', function () {
-    return view('userSignUp.login');
-});
-Route::get('/', function () {
-    return view('userSignUp.userviewpage');
-});
-Route::get('/edit', function () {
-    return view('userSignUp.usereditpage');
-});
-Route::get('/acc', function () {
-    return view('userSignUp.accountsettingpage');
-});
+
+// Multi-auth-routes
+// show register & login page
+Route::get('/register/mauth', 'MultiAuth\RegisterController@show')->name('register.mauth')->middleware('guest');
+Route::get('/login/mauth','MultiAuth\LoginController@show')->name('login.mauth')->middleware('guest');
+
+// register & login user
+Route::post('/login/mauth', 'MultiAuth\LoginController@authenticate');
+Route::post('/register/mauth', 'MultiAuth\RegisterController@register');
+
+// Protected Routes - allows only logged in users
+// Route::middleware('auth')->group(function () {
+   
+    Route::post('/logout/mauth', 'MultiAuth\LoginController@logout')->name('logout.me');
+    Route::get('/admin', 'MultiAuth\AdminController@show')->name('admin.board'); //admin board
+    Route::get('/admin/userlist', 'MultiAuth\AdminController@userlist_show')->name('admin.userlist'); //admin board userlist
+    Route::get('/product/board', 'MultiAuth\ProductBoardController@show')->name('product.board'); //product board
+    Route::get('/dress/board', 'MultiAuth\DressBoardController@show')->name('dress.board'); //dress board
+    
+// });
