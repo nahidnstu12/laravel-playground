@@ -22,7 +22,11 @@
         <div class="btn-group float-md-right" role="group" aria-label="Button group with nested dropdown">
             <button class="btn btn-info round dropdown-toggle dropdown-menu-right box-shadow-2 px-2 mb-1"
                 id="btnGroupDrop1" type="button" data-toggle="dropdown" aria-haspopup="true"
-                aria-expanded="false"><i class="ft-settings icon-left"></i> Settings</button>
+                aria-expanded="false">
+                <i class="ft-settings icon-left"></i> 
+                @guest Settings @endguest
+                @auth {{auth()->user()->name}} @endauth
+            </button>
             <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
                 @auth
                 <a class="dropdown-item" href="{{ url('/')}}">View User</a>
