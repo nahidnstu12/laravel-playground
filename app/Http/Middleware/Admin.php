@@ -16,16 +16,16 @@ class Admin
     public function handle($request, Closure $next)
     {
 
-        if (Auth::user()->role_type == 3) {
-            return redirect()->route('admin.board');
+        if (Auth::user()->role_type == 1) {
+            return redirect()->route('dress.board');
         }
         if (Auth::user()->role_type == 0) {
-            return redirect()->route('regular.board');
+            return redirect()->route('normal.board');
         }
         if (Auth::user()->role_type == 2) {
             return redirect()->route('product.board');
         }
-        if (Auth::user()->role_type == 1) {
+        if (Auth::user()->role_type == 3) {
             return $next($request);
         }
         \abort(403);

@@ -4,7 +4,7 @@ namespace App\Http\Middleware;
 
 use Closure;
 
-class Dress
+class Product
 {
     /**
      * Handle an incoming request.
@@ -22,10 +22,10 @@ class Dress
         if (Auth::user()->role_type == 0) {
             return redirect()->route('normal.board');
         }
-        if (Auth::user()->role_type == 2) {
-            return redirect()->route('product.board');
-        }
         if (Auth::user()->role_type == 1) {
+            return redirect()->route('dress.board');
+        }
+        if (Auth::user()->role_type == 2) {
             return $next($request);
         }
         \abort(403);

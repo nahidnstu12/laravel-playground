@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\MultiAuth;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\RegisterFormRequest;
+use App\User;
 use Illuminate\Http\Request;
 
 class RegisterController extends Controller
@@ -11,15 +13,15 @@ class RegisterController extends Controller
         return view('multiauth.register');
     }
 
-    public function register(Request $request){
+    public function register(RegisterFormRequest $request){
         $data = array();
-        $validator = $request->validate([
-            'name'    => 'required|min:3|max:15',
-            'email'   => 'required',
-            'password'=> 'required|min:2|confirmed'
-        ]);
-
+        $validator = $request->validated();
+        $validator = $request->all();
+        // dd($validator);
         User::create($validator);
+
+       
+
         $data['status']="Successfully Registered";
 
         return \redirect('/login/mauth')->with($data);
