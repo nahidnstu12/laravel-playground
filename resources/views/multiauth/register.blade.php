@@ -70,11 +70,11 @@
                                         <fieldset>
                                             <div class="form-group">
                                                 <label>Role</label>
-                                                <select class="form-control">
-                                                    <option>User</option>
-                                                    <option>Dress</option>
-                                                    <option>Product</option>
-                                                    <option>Admin</option>
+                                                <select class="form-control" name="role_type">
+                                                    <option value="0">User</option>
+                                                    <option value="1">Dress</option>
+                                                    <option value="2">Product</option>
+                                                    <option value="3">Admin</option>
                                                 </select>
                                             </div>
                                         </fieldset>
