@@ -32,6 +32,10 @@
                 <a class="dropdown-item" href="{{ url('/')}}">View User</a>
                 <a class="dropdown-item" href="{{ url('/edit-user')}}">Edit User</a>
                 <a class="dropdown-item" href="{{ url('/account-settings')}}">Account Settings</a>
+            @if( auth()->user()->role_type == 3)
+                <a class="dropdown-item" href="{{ url('/admin/board')}}">Admin Board</a>
+                <a class="dropdown-item" href="{{ url('/admin/userlist')}}">Admin Userlist</a>
+            @endif
                 <form method="post" action="{{ route('logout.me')}}">
                     @csrf
                     {{-- @method('post') --}}
