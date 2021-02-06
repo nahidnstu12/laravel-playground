@@ -6,7 +6,7 @@
     <div class="content-overlay"></div>
     <div class="content-wrapper">
         {{-- header --}}
-        @include('usersignup.header')
+        @include('usersignup.header',['pageName'=> 'Normal User Dashboard'])
         <div class="content-header row">
         </div>
         <div class="content-body">

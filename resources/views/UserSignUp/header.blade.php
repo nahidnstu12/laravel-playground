@@ -10,8 +10,10 @@
                     </li>
                     {{-- <li class="breadcrumb-item"><a href="#">Pages</a>
                     </li> --}}
-                    <li class="breadcrumb-item active">Account setting
+                    @isset($pageName)
+                    <li class="breadcrumb-item active">{{ $pageName }}
                     </li>
+                    @endisset
                 </ol>
             </div>
         </div>
@@ -32,10 +34,19 @@
                 <a class="dropdown-item" href="{{ url('/')}}">View User</a>
                 <a class="dropdown-item" href="{{ url('/edit-user')}}">Edit User</a>
                 <a class="dropdown-item" href="{{ url('/account-settings')}}">Account Settings</a>
-            @if( auth()->user()->role_type == 3)
-                <a class="dropdown-item" href="{{ url('/admin/board')}}">Admin Board</a>
-                <a class="dropdown-item" href="{{ url('/admin/userlist')}}">Admin Userlist</a>
-            @endif
+                @if( auth()->user()->role_type == 3)
+                    <a class="dropdown-item" href="{{ url('/admin/board')}}">Admin Board</a>
+                    <a class="dropdown-item" href="{{ url('/admin/userlist')}}">Admin Userlist</a>
+                @endif
+                @if( auth()->user()->role_type == 0)
+                <a class="dropdown-item" href="{{ url('/user/board')}}">Normal User Board</a>
+                @endif
+                @if( auth()->user()->role_type == 1)
+                <a class="dropdown-item" href="{{ url('/dress/board')}}">Dress Board</a>
+                @endif
+                @if( auth()->user()->role_type == 2)
+                <a class="dropdown-item" href="{{ url('/product/board')}}">Product Board</a>
+                @endif
                 <form method="post" action="{{ route('logout.me')}}">
                     @csrf
                     {{-- @method('post') --}}

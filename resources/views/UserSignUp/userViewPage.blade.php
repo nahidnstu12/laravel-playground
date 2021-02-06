@@ -26,11 +26,11 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-12 col-sm-5 px-0 d-flex justify-content-end align-items-center px-1 mb-2">
+                            {{-- <div class="col-12 col-sm-5 px-0 d-flex justify-content-end align-items-center px-1 mb-2">
                                 <a href="#" class="btn btn-sm mr-25 border"><i class="ft-message-square font-small-3"></i></a>
                                 <a href="#" class="btn btn-sm mr-25 border">Profile</a>
                                 <a href="{{ url('/edit')}}" class="btn btn-sm btn-primary">Edit</a>
-                            </div>
+                            </div> --}}
                         </div>
                         <!-- users view media object ends -->
                         <!-- users view card data start -->
@@ -43,23 +43,23 @@
                                                 <tbody>
                                                     <tr>
                                                         <td>Registered:</td>
-                                                        <td>01/01/2019</td>
+                                                        <td>{{ auth()->user()->created_at}}</td>
                                                     </tr>
-                                                    <tr>
+                                                    {{-- <tr>
                                                         <td>Latest Activity:</td>
                                                         <td class="users-view-latest-activity">30/04/2019</td>
-                                                    </tr>
+                                                    </tr> --}}
                                                     <tr>
                                                         <td>Verified:</td>
-                                                        <td class="users-view-verified">Yes</td>
+                                                        <td class="users-view-verified">{{$verified}}</td>
                                                     </tr>
                                                     <tr>
                                                         <td>Role:</td>
-                                                        <td class="users-view-role">Staff</td>
+                                                        <td class="users-view-role">{{$role}}</td>
                                                     </tr>
                                                     <tr>
                                                         <td>Status:</td>
-                                                        <td><span class="badge badge-success users-view-status">Active</span></td>
+                                                        <td><span class="badge badge-success users-view-status">{{ $status}}</span></td>
                                                     </tr>
                                                 </tbody>
                                             </table>

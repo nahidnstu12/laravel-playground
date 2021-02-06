@@ -6,7 +6,7 @@
     <div class="content-overlay"></div>
     <div class="content-wrapper">
         {{-- header --}}
-        @include('usersignup.header')
+        @include('usersignup.header',['pageName'=> 'User Account Settings Page'])
 
         <div class="content-body">
             <!-- account setting page start -->
