@@ -26,9 +26,9 @@ class RegisterFormRequest extends FormRequest
         return [
             'name'    => 'required|min:3|max:15|unique:users',
             'email'   => 'required|unique:users',
-            'password'=> 'required|min:2|confirmed',
-            // 'phone_no'=> 'required|regex:/(01)[0-9]{9}/|unique:users'
-            'phone_no' => 'required'
+            'password'=> 'required|min:6|confirmed',
+            'phone_no'=> 'required|regex:/(01)[0-9]{9}/|unique:users',
+            // 'phone_no' => 'required'
         ];
     }
 
@@ -36,7 +36,7 @@ class RegisterFormRequest extends FormRequest
     {
         return[
             'phone_no.required' => 'Phone Number Needed',
-            'phone_no.regex' => 'You Should Provide Bd format Number'
+            'phone_no.regex' => 'You Should Provide Bd format Phone Number'
         ];
     }
 }

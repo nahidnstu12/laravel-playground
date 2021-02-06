@@ -2,6 +2,7 @@
 
 namespace App;
 
+use Carbon\Carbon;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -16,6 +17,7 @@ class User extends Authenticatable
      *
      * @var array
      */
+
     protected $fillable = [
         'name', 'email', 'password','phone_no','role_type'
     ];
@@ -23,6 +25,11 @@ class User extends Authenticatable
     public function setPasswordAttribute($password){
         $this->attributes['password'] = Hash::make($password);
     }
+    public function getCreatedAtAttribute($value)
+    {
+        return Carbon::parse($value)->format('d-M-Y');
+    }
+   
 
     /**
      * The attributes that should be hidden for arrays.
