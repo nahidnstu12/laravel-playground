@@ -105,7 +105,7 @@
                                                 class="ft-unlock"></i> Register</button>
                                     </form>
                                 </div>
-                                <p class="text-center">Already have an account ? <a href="{{ url('/login')}}"
+                                <p class="text-center">Already have an account ? <a href="{{ url('/login/mauth')}}"
                                         class="card-link">Login</a></p>
                             </div>
                         </div>

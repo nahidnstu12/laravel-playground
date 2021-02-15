@@ -64,7 +64,7 @@ class LoginController extends Controller
         }
         $data['status'] = "Login Success";
 
-        return \redirect()->route('admin.board')->with($data);
+        return \redirect()->route('admin.dress')->with($data);
     }
 
     public function forgetpass(){

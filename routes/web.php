@@ -46,9 +46,14 @@ Route::middleware('auth')->group(function () {
    
     Route::post('/logout/mauth', 'MultiAuth\LoginController@logout')->name('logout.me');
 
-    Route::get('/admin/board', 'MultiAuth\AdminController@show')->name('admin.board')->middleware('admin'); //admin board
-
+    // Route::get('/admin/board', 'MultiAuth\AdminController@show')->name('admin.board')->middleware('admin'); //admin board
+    // admin route
     Route::get('/admin/userlist', 'MultiAuth\AdminController@userlist_show')->name('admin.userlist')->middleware('admin'); //admin board userlist
+    Route::get('/admin/dress','MultiAuth\AdminController@getDresses')->name('admin.dress')->middleware('admin');
+    Route::post('/admin/dress','MultiAuth\AdminController@addDress');
+    Route::get('/admin/search', 'MultiAuth\AdminController@searchDress');
+    Route::delete('/admin/{dress}/dress','MultiAuth\AdminController@deleteDress')->name('admin.dress.delete');
+    Route::get('/admin/product','MultiAuth\AdminController@getProducts')->middleware('admin');
 
     Route::get('/product/board', 'MultiAuth\ProductBoardController@show')->name('product.board')->middleware('product'); //product board
 

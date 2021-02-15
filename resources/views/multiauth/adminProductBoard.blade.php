@@ -6,7 +6,7 @@
     <div class="content-overlay"></div>
     <div class="content-wrapper">
         {{-- header --}}
-        @include('usersignup.header',['pageName'=> 'Admin Dress Dashboard'])
+        @include('usersignup.header',['pageName'=> 'Admin Product Dashboard'])
         <div class="content-header row">
         </div>
         <div class="content-body">
@@ -18,17 +18,17 @@
                     <div class="col-xl-8 col-lg-12 m-auto">
                         <div class="card">
                             <div class="card-header">
-                                <h4 class="card-title" id="list-editable">ALL Dresses </h4>
+                                <h4 class="card-title" id="list-editable">ALL Products </h4>
                             </div>
                             <div class="card-body">
                                 <div class="card-body">
 
                                     <div id="editable-list" >
-                                    <form action="{{ url('/admin/search')}}">
-                                        <input type="text" class="search form-control round border-primary mb-1" placeholder="Search" name="search" />
-                                      
-                                    </form>
-                                        {{-- <div class="row">
+                                   
+
+                                        <input type="text" class="search form-control round border-primary mb-1"
+                                            placeholder="Search" />
+                                        <div class="row">
                                             <div class="col-md-6 col-sm-12">
                                                 <button class="sort btn btn-block btn-outline-warning btn-round mb-2"
                                                     data-sort="name">Sort by name
@@ -39,60 +39,44 @@
                                                     data-sort="age">Sort by price
                                                 </button>
                                             </div>
-                                        </div> --}}
+                                        </div>
                                     </div>
                                         {{-- add/edit form dress--}}
                                         <div class="table-responsive">
-                                            <form action="{{ route('admin.dress')}}" method="post">
-                                            @csrf
                                             <table class="table table-bordered table-lg mt-2 mb-2">
                                                 <tr>
                                                     <td class="name">
-                                                       
-                                                        <input type="text" id="name-field" placeholder="Name" class="form-control @error('dress_name') is-invalid @enderror" name="dress_name" value="{{ old('dress_name')}}"/>
+                                                        <input type="hidden" id="id-field" />
+                                                        <input type="text" id="name-field" placeholder="Name"
+                                                            class="form-control" name="dress_name"/>
                                                     </td>
                                                 </tr>
-                                                @error('dress_name')
-                                                <span class="invalid-feedback" role="alert"><strong>{{ $message}}</strong></span>
-                                                @enderror
                                                 <tr>
                                                     <td class="age">
-                                                        {{-- <input type="text" id="age-field" placeholder="Brand Name" class="form-control" name="brand_id"/> --}}
-                                                        <fieldset>
-                                                            <div class="form-group">
-                                                                <label>Brand Name</label>
-                                                                <select class="form-control" name="brand_id">
-                                                                    {{-- <option >Select Brand Type</option> --}}
-                                                                    @foreach ($brand_list as $item)
-                                                                        <option value={{ $item->id }}>{{ $item->brand_name}}</option>
-                                                                    @endforeach                                                                   
-                                                                </select>
-                                                            </div>
-                                                        </fieldset>
+                                                        <input type="text" id="age-field" placeholder="Brand Name"
+                                                            class="form-control" name="brand_id"/>
                                                     </td>
                                                 </tr>
                                                 <tr>
                                                     <td class="city">
-                                                        <input type="text" id="city-field" placeholder="Quantity" class="form-control @error('quantity') is-invalid @enderror" name="quantity" value="{{ old('quantity')}}"/>
+                                                        <input type="text" id="city-field" placeholder="Quantity"
+                                                            class="form-control" name="quantity"/>
                                                     </td>
                                                 </tr>
                                                 <tr>
                                                     <td class="city">
                                                         <input type="text" id="city-field" placeholder="Price"
-                                                            class="form-control @error('price') is-invalid @enderror" name="price" value="{{ old('price')}}"/>
+                                                            class="form-control" name="price"/>
                                                     </td>
                                                 </tr>
                                                 <tr>
                                                     <td class="add">
                                                         <button id="add-btn" class="btn btn-success">Add</button>
-                                                        {{-- <button id="edit-btn" class="btn btn-primary">Edit</button> --}}
+                                                        <button id="edit-btn" class="btn btn-primary">Edit</button>
                                                     </td>
                                                 </tr>
                                             </table>
-                                        </form>
                                         </div>
-
-
                                         {{-- data table --}}
                                         <div class="table-responsive">
                                             <table class="table table-bordered table-lg text-center">
@@ -102,35 +86,30 @@
                                                         <th class="sort text-center" data-sort="age">Brand</th>
                                                         <th class="sort text-center" data-sort="age">Quantity</th>
                                                         <th class="sort text-center" data-sort="city">Price</th>
-                                                        {{-- <th>Edit</th> --}}
+                                                        <th>Edit</th>
                                                         <th>Remove</th>
                                                     </tr>
                                                 </thead>
                                                 <!-- IMPORTANT, class="list" have to be at tbody -->
                                                 <tbody class="list">
-                                                  {{-- @if(isset($dresses)) --}}
-                                                   @forelse ($dresses as $dress)
+                                                  
+                                                   @forelse ($products as $dress)
                                                    <tr>
                                                     <td class="name">{{ $dress->dress_name}}</td>
                                                     <td class="age">{{ $dress->brand->brand_name}}</td>
                                                     <td class="age">{{ $dress->quantity}}</td>
                                                     <td class="city">{{ $dress->prices}}</td>
-                                                    {{-- <td class="edit"><button
+                                                    <td class="edit"><button
                                                             class="btn btn-outline-primary edit-item-btn">Edit</button>
-                                                    </td> --}}
-                                                    <td class="remove">
-                                                        <form action="{{ route('admin.dress.delete', $dress)}}" method="POST">
-                                                            @csrf
-                                                            @method('DELETE')
-                                                            <button type="submit" class="btn btn-outline-danger remove-item-btn" onclick="return confirm('Are You Sure?')">Remove</button>
-                                                        </form>
+                                                    </td>
+                                                    <td class="remove"><button
+                                                            class="btn btn-outline-danger remove-item-btn">Remove</button>
                                                     </td>
                                                 </tr>
                                                    @empty
-                                                       <p>Sorry, No dress available</p>
+                                                       <p>Sorry, No Product Available</p>
                                                    @endforelse
-                                                   {{-- @endif --}}
-
+                                                    
                                                 </tbody>
                                             </table>
                                         </div>

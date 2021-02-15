@@ -18,9 +18,13 @@ class CreateProductsTable extends Migration
 
             $table->bigIncrements('id');
             $table->string('name')->nullable();
-            $table->integer('status')->nullable()->comment('1=active;2=block');
-            $table->unsignedBigInteger('category_id');    
+            $table->integer('quantity')->default(0);
+            $table->double('prices',8,2)->default(0);
+            $table->integer('status')->nullable(); 
+            $table->unsignedBigInteger('category_id');
+            $table->unsignedBigInteger('user_id');      
 
+            $table->foreign('user_id')->references('id')->on('users');
             $table->foreign('category_id')->references('id')->on('categories');
             $table->timestamps();
         });

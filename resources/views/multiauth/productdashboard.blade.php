@@ -15,7 +15,7 @@
                 <!-- users view media object start -->
                
 
-                    <div class="col-lg-12">
+                    <div class="col-lg-8 m-auto">
                         <div class="card">
                             <div class="card-header">
                                 <h4 class="card-title" id="list-editable">ALL Products </h4>

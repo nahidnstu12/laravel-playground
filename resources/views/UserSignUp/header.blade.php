@@ -35,7 +35,8 @@
                 <a class="dropdown-item" href="{{ url('/edit-user')}}">Edit User</a>
                 <a class="dropdown-item" href="{{ url('/account-settings')}}">Account Settings</a>
                 @if( auth()->user()->role_type == 3)
-                    <a class="dropdown-item" href="{{ url('/admin/board')}}">Admin Board</a>
+                    <a class="dropdown-item" href="{{ url('/admin/dress')}}">Admin Dress Board</a>
+                    <a class="dropdown-item" href="{{ url('/admin/product')}}">Admin Product Board</a>
                     <a class="dropdown-item" href="{{ url('/admin/userlist')}}">Admin Userlist</a>
                 @endif
                 @if( auth()->user()->role_type == 0)
