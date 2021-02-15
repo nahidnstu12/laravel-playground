@@ -6,8 +6,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class Brand extends Model
 {
-    public function Product()
+    public function dress()
     {
-        return $this->belongsTo(Product::class);
+        return $this->hasMany(Dress::class);
     }
+
 }

@@ -33,7 +33,7 @@ class Dress
             0 => 'normal.board',
             // 1 => 'dress.board',
             2 => 'product.board',
-            3 => 'admin.board'
+            3 => 'admin.dress'
         ];
         return redirect(route($destinations[Auth::user()->role_type]));
         \abort(403);

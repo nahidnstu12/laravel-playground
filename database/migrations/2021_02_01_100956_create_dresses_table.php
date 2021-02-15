@@ -18,9 +18,12 @@ class CreateDressesTable extends Migration
             $table->bigIncrements('id');
             $table->string('dress_name')->nullable();
             $table->integer('quantity')->default(0);
-            $table->integer('status');               
-            $table->unsignedBigInteger('brand_id');          
+            $table->double('prices',8,2)->default(0);
+            $table->integer('status')->nullable();               
+            $table->unsignedBigInteger('brand_id');  
+            $table->unsignedBigInteger('user_id');      
 
+            $table->foreign('user_id')->references('id')->on('users');        
             $table->foreign('brand_id')->references('id')->on('brands');
             $table->timestamps();
         });

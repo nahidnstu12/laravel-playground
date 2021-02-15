@@ -14,7 +14,7 @@
             <section class="users-view">
                 <!-- users view media object start -->
 
-                    <div class="col-xl-6 col-lg-12 m-auto">
+                    <div class="col-xl-8 col-lg-8 m-auto">
                         <div class="card">
                             <div class="card-header">
                                 <h4 class="card-title" id="list-editable">ALL Dresses </h4>

@@ -2,11 +2,12 @@
 
 namespace App;
 
+use App\Dress;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
-use Illuminate\Notifications\Notifiable;
-use Illuminate\Support\Facades\Hash;
 
 class User extends Authenticatable
 {
@@ -29,7 +30,9 @@ class User extends Authenticatable
     {
         return Carbon::parse($value)->format('d-M-Y');
     }
-   
+    public function dresess(){
+        return $this->hasMany(Dress::class);
+    }
 
     /**
      * The attributes that should be hidden for arrays.
