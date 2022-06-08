@@ -3,13 +3,15 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
+use App\Models\Product;
 
 class ProductController extends Controller
 {
     public function index()
     {
         $products = Product::all();
-        return view("products.index")->with("products");
+        return view("products.index")->with("products",$products);
     }
     public function create(Request $request)
     {
@@ -28,7 +30,7 @@ class ProductController extends Controller
     }
     public function destroy(Request $request,$id)
     {
-        $product = Product->destroy($id);
+        $product = Product::destroy($id);
         return Response::json($product);
     }
 }
