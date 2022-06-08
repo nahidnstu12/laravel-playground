@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layout.app')
 
 @section('content')
 
@@ -8,7 +8,7 @@
         <h2 class="card-title">Laravel AJAX Examples
             
         </h2>
-        <button id="btn-add" name="btn-add" class="btn btn-primary btn-xs">Add New Product</button>
+        <button id="btn-add" name="btn-add" class="btn btn-primary btn-xs" data-toggle="modal" data-target="#productEditorModal1">Add New Product</button>
     </div>
 
     <div>
@@ -44,7 +44,7 @@
             </tbody>
         </table>
 
-        <div class="modal fade" id="productEditorModal" aria-hidden="true">
+        <div class="modal fade" id="productEditorModal" aria-hidden="true" abindex="-1" role="dialog" aria-labelledby="exampleModalLabel" >
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -56,7 +56,7 @@
                             <div class="form-group">
                                 <label for="inputproduct" class="col-sm-2 control-label capitalize">Product Name</label>
                                 <div class="col-sm-10">
-                                    <input type="text" class="form-control" id="product" name="producttitle"
+                                    <input type="text" class="form-control" id="producttitle" name="producttitle"
                                         placeholder="product title" value="">
                                 </div>
                             </div>
@@ -64,7 +64,7 @@
                             <div class="form-group">
                                 <label class="col-sm-2 control-label">Category</label>
                                 <div class="col-sm-10">
-                                    <input type="text" class="form-control" id="description" name="category"
+                                    <input type="text" class="form-control" id="category" name="category"
                                         placeholder="Enter product category" value="">
                                 </div>
                             </div>
@@ -78,16 +78,16 @@
                             <div class="form-group">
                                 <label class="col-sm-2 control-label">Product Image</label>
                                 <div class="col-sm-10">
-                                    <input type="file" class="form-control" id="image" name="productimage" placeholder="Enter product category"
+                                    <input type="file" class="form-control" id="productimage" name="productimage" placeholder="Enter product category"
                                         value="">
                                 </div>
                             </div>
                         </form>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-primary" id="btn-save" value="add">Save changes
+                        <button type="button" class="btn btn-primary" id="btn-save" value="">Save changes
                         </button>
-                        <input type="hidden" id="product_id" name="product_id" value="0">
+                        <input type="hidden" id="product_id" name="product_id" value="">
                     </div>
                 </div>
             </div>
