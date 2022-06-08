@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Illuminate\Http\Response;
+use Response;
 use App\Models\Product;
 
 class ProductController extends Controller
@@ -16,6 +16,11 @@ class ProductController extends Controller
     public function create(Request $request)
     {
         $product = Product::create($request->all());
+        return Response::json($product);
+    }
+    public function single($id)
+    {
+        $product = Product::find($id);
         return Response::json($product);
     }
     public function update(Request $request, $id)
