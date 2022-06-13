@@ -43,3 +43,20 @@ Route::group(["prefix"=> "trainer"], function (){
 
     });
 });
+
+// job-circular routes
+Route::prefix('admin')->name('admin.')
+    ->middleware('auth')->group(function (){
+        Route::prefix('employers')->name('employers.')
+            ->group(function (){
+                Route::prefix('jobs')->name('jobs.')
+                    ->group(function (){
+                        Route::get('/datatable', [\App\Http\Controllers\JobController::class, 'getDataTable'])
+                            ->name('datatable');
+                        Route::get('/status', [\App\Http\Controllers\JobController::class, 'jobStatus'])
+                            ->name('status');
+
+                    });
+                Route::resource('jobs',\App\Http\Controllers\JobController::class);
+            });
+    });
