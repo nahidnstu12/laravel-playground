@@ -43,4 +43,11 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+    public const USER_TYPES_CODE = [
+        'Super' =>1,
+        'Youth'=> 2,
+        'Employer'=> 3,
+        'Tsp' =>4,
+        'Trainer' => 5
+    ];
 }

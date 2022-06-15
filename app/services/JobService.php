@@ -2,6 +2,7 @@
 
 namespace App\services;
 
+use App\Helpers\Classes\AuthHelper;
 use App\Models\BaseModel;
 use App\Models\Job;
 use Illuminate\Http\JsonResponse;
