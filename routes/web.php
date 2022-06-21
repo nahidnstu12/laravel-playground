@@ -33,3 +33,30 @@ Route::put("/crud/{id}", [ProductController::class, "update2"]);
 Route::delete("/crud/{id}", [ProductController::class, "destroy2"]);
 
 Route::resource("/books", BookController::class);
+Route::get("/course-certificate", [ProductController::class, "courseCertificate"])->name("course.certificate");
+// testing code
+Route::group(["prefix"=> "trainer"], function (){
+    Route::group(["prefix"=> "/courses"], function (){
+        Route::get('/', [\App\Http\Controllers\TrainerController::class, 'courses'])->name('course.index.trainer')->can('create-course');
+        Route::get('/create', [\App\Http\Controllers\CourseController::class, 'create'])->name('course.trainer')->can('create-course');
+        Route::post('/create', [\App\Http\Controllers\CourseController::class, 'store'])->name('course.trainer')->can('create-course');
+
+    });
+});
+
+// job-circular routes
+Route::prefix('admin')->name('admin.')
+    ->middleware('auth')->group(function (){
+        Route::prefix('employers')->name('employers.')
+            ->group(function (){
+                Route::prefix('jobs')->name('jobs.')
+                    ->group(function (){
+                        Route::get('/datatable', [\App\Http\Controllers\JobController::class, 'getDataTable'])
+                            ->name('datatable');
+                        Route::get('/status', [\App\Http\Controllers\JobController::class, 'jobStatus'])
+                            ->name('status');
+
+                    });
+                Route::resource('jobs',\App\Http\Controllers\JobController::class);
+            });
+    });
