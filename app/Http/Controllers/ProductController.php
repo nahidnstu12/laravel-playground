@@ -81,4 +81,28 @@ class ProductController extends Controller
         $product = Product::destroy($id);
         return Response::json($product);
     }
+    public function courseCertificate()
+    {
+        $data = [
+            'name' => 'Rahul Amin Hawladar',
+            'certificate_text' => 'Course Certificate Assessment',
+            'small_text' => 'Certificate To',
+            'created_at' => '28th July,2021',
+            'profile-pic' => 'certificate-demo-1.png',
+            'text' => 'has successfully completed Fundamental Computer Course an online non-credit course authorized by SomeoneTraining Service'
+        ];
+
+        // return view('course-certificate', compact('data'));
+        $html = view('course-certificate', compact('data'))->render();
+
+        $pdf = \Barryvdh\DomPDF\Facade\Pdf::loadHTML($html);
+        $pdf->setPaper('A4', 'landscape');
+        return $pdf->download('laratutorials.pdf');
+        // \Illuminate\Support\Facades\Storage::put('pdf/invoice.pdf', $pdf->output());
+        // $certificatePath = \Illuminate\Support\Facades\Storage::path('pdf/invoice.pdf');
+        //$pdf->stream();
+        //auth()->user()->notify(new \App\Notifications\CertificationNotification($certificatePath));
+        // return "Done";
+
+    }
 }
