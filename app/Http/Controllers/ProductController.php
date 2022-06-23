@@ -97,12 +97,12 @@ class ProductController extends Controller
 
         $pdf = \Barryvdh\DomPDF\Facade\Pdf::loadHTML($html);
         $pdf->setPaper('A4', 'landscape');
-        return $pdf->download('laratutorials.pdf');
+
         // \Illuminate\Support\Facades\Storage::put('pdf/invoice.pdf', $pdf->output());
         // $certificatePath = \Illuminate\Support\Facades\Storage::path('pdf/invoice.pdf');
         //$pdf->stream();
         //auth()->user()->notify(new \App\Notifications\CertificationNotification($certificatePath));
-        // return "Done";
+        return "Done";
 
     }
 }
