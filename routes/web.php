@@ -33,7 +33,14 @@ Route::put("/crud/{id}", [ProductController::class, "update2"]);
 Route::delete("/crud/{id}", [ProductController::class, "destroy2"]);
 
 Route::resource("/books", BookController::class);
-Route::get("/course-certificate", [ProductController::class, "courseCertificate"])->name("course.certificate");
+Route::get("/pdf-create", [ProductController::class, "courseCertificate"])->name("course.certificate");
+
+
+//Route::get('/pdf-create', [ProductController::class, '']);
+
+Route::get('/pdf-show', [ProductController::class, 'showPdf']);
+
+
 // testing code
 Route::group(["prefix"=> "trainer"], function (){
     Route::group(["prefix"=> "/courses"], function (){
