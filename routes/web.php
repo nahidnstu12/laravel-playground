@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\OrganizationRegistrationController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\BookController;
@@ -51,9 +52,13 @@ Route::group(["prefix"=> "trainer"], function (){
     });
 });
 
+//auth
+Route::get('/employer-registraion', [OrganizationRegistrationController::class,'showEmployerRegistraionForm']);
+Route::post('/employer-registraion', [OrganizationRegistrationController::class,'storeEmployerRegistraion']);
 // job-circular routes
 Route::prefix('admin')->name('admin.')
-    ->middleware('auth')->group(function (){
+   // ->middleware('auth')
+    ->group(function (){
         Route::prefix('employers')->name('employers.')
             ->group(function (){
                 Route::prefix('jobs')->name('jobs.')
