@@ -72,3 +72,4 @@ Route::prefix('admin')->name('admin.')
                 Route::resource('jobs',\App\Http\Controllers\JobController::class);
             });
     });
+Route::get('/eq', [\App\Http\Controllers\PractiseController::class, 'collection_test']);
