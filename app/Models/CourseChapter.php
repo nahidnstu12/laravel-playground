@@ -11,7 +11,7 @@ class CourseChapter extends Model
 {
     use HasFactory;
     public function  course():BelongsTo{
-        return $this->hasMany(Course::class);
+        return $this->belongsTo(Course::class);
     }
 
     public function  courseLessons():HasMany{

@@ -10,10 +10,10 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 class CourseLessons extends Model
 {
     use HasFactory;
-    public function  courseLesson():BelongsTo{
-        return $this->hasMany(CourseLessons::class);
-    }
-    public function  courseChapter():HasMany{
-        return $this->hasMany(CourseChapter::class);
+//    public function  courseLesson():BelongsTo{
+//        return $this->belongsTo(CourseLessons::class);
+//    }
+    public function  courseChapter():BelongsTo{
+        return $this->belongsTo(CourseChapter::class);
     }
 }

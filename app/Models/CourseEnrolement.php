@@ -10,6 +10,8 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 class CourseEnrolement extends Model
 {
     use HasFactory;
+    protected $table = 'course_enrolments';
+    
     public function student(): HasMany
     {
         return $this->hasMany(Student::class, "student_id", "id");

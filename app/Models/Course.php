@@ -24,7 +24,7 @@ class Course extends Model
 
     public  function  courseChapters():HasMany
     {
-        return $this->belongsTo(CourseChapter::class);
+        return $this->hasMany(CourseChapter::class);
     }
 
     public function students():BelongsToMany
