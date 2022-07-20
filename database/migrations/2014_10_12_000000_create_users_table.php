@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('username', 20);
             $table->string('email')->unique();
             $table->string('role')->default(0);
-            $table->string('otp', 6);
+            $table->string('otp', 6)->nullable();
             //$table->string('image')->nullable();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');

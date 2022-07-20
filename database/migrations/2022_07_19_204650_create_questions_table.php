@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('title', 200);
             $table->string('slug');
             $table->text('ques_body');
-            $table->unsignedInteger('votes_count')->default(0);
+            $table->integer('votes_count')->default(0);
             $table->unsignedInteger('answers_count')->default(0);
             $table->unsignedInteger('views_count')->default(0);
             $table->foreignId('user_id')->nullable()->constrained('users')
