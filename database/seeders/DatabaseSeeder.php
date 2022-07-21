@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Answer;
 use App\Models\Question;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
@@ -31,5 +32,6 @@ class DatabaseSeeder extends Seeder
             StudentSeeder::class,
         ]);
         Question::factory(10)->create();
+        Answer::factory(40)->create();
     }
 }

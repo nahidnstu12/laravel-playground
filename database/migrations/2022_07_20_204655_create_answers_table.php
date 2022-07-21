@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('answers', function (Blueprint $table) {
             $table->id();
             $table->text('ans_body' );
-            $table->unsignedInteger('votes_count')->default(0);
+            $table->Integer('votes_count')->default(0);
 
             $table->foreignId('question_id')->nullable()->constrained('questions')
                 ->cascadeOnUpdate()
