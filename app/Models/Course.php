@@ -29,7 +29,7 @@ class Course extends Model
 
     public function students():BelongsToMany
     {
-        return $this->belongsToMany(Student::class, 'course_enrolments', 'course_id', 'student_id')->withPivot('tsp_approval', 'enrolment_date', 'row_status')->withTimestamps();
+        return $this->belongsToMany(Student::class, 'course_enrolements', 'course_id', 'student_id')->withPivot('tsp_approval', 'enrolment_date')->withTimestamps();
     }
 
 }

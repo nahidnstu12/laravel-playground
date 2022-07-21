@@ -13,6 +13,6 @@ class Student extends Model
 
     public function courses():BelongsToMany
     {
-        return $this->belongsToMany(Course::class, 'course_enrolments', 'student_id', 'course_id'  )->withPivot('id as enrolment_id', 'tsp_approval',  'enrolment_date', 'row_status')->withTimestamps();
+        return $this->belongsToMany(Course::class, 'course_enrolements', 'student_id', 'course_id')->withPivot('id as enrolment_id', 'tsp_approval', 'enrolment_date')->withTimestamps();
     }
 }
