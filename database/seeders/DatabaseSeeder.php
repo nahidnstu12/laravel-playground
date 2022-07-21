@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Question;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
@@ -21,6 +22,7 @@ class DatabaseSeeder extends Seeder
         //     'email' => 'test@example.com',
         // ]);
         $this->call([
+            UserSeeder::class,
             CourseSeeder::class,
             CourseChapterSeeder::class,
             CourseLessonsSeeder::class,
@@ -28,5 +30,6 @@ class DatabaseSeeder extends Seeder
             TrainerSeeder::class,
             StudentSeeder::class,
         ]);
+        Question::factory(10)->create();
     }
 }
