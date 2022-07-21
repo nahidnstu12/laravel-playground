@@ -14,17 +14,22 @@
         </tr>
         </thead>
         <tbody>
-        <tr>
-            <th scope="row">1</th>
-            <td>Mark</td>
-            <td>23</td>
-            <td>@mdo</td>
-            <td>23</td>
-            <td>
-                <button class="btn btn-outline-primary">Edit</button>
-                <button class="btn btn-outline-success">Active</button>
-            </td>
-        </tr>
+        @forelse($courses as $key =>$course)
+            <tr>
+                <th scope="row">{{$key+1}}</th>
+                <td>{{ $course->course_title }}</td>
+                <td>{{ $course->course_duration }}</td>
+                <td>{{ Str::title($course->trainer->name) }}</td>
+                <td>{{ "count student" }}</td>
+                <td>
+                    <button class="btn btn-outline-primary">Edit</button>
+                    <button class="btn btn-outline-success">Active</button>
+                </td>
+            </tr>
+        @empty
+            <h1>No Course Information Available</h1>
+        @endforelse
+
 
         </tbody>
     </table>

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Course;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
 
@@ -10,7 +11,9 @@ class CourseInfoController extends Controller
     const PATH = 'course-info.';
     public function get_courses():View
     {
-        return view(self::PATH . 'coures-information');
+        $courses = Course::with('trainer')->get();
+//        ->dd();
+        return view(self::PATH . 'coures-information', compact('courses'));
     }
     public function show():View
     {

@@ -29,6 +29,7 @@ return new class extends Migration
             $table->timestamp('enrolment_date')->default(now());
             $table->dateTime('complete_date')->nullable();
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

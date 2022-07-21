@@ -18,6 +18,7 @@ return new class extends Migration
            $table->string('name');
             $table->unsignedTinyInteger("row_status")->default(1);
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
