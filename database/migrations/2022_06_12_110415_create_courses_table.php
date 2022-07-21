@@ -16,23 +16,15 @@ return new class extends Migration
         Schema::create('courses', function (Blueprint $table) {
             $table->id();
             $table->string("course_title", 500)->nullable();
-            $table->string("course_title_en", 500)->nullable();
-            $table->string("course_description", 500)->nullable();
-            $table->string("course_description_en", 500)->nullable();
-            $table->string("course_prerequisite", 500)->nullable();
-            $table->string("course_prerequisite_en", 500)->nullable();
-            $table->string("course_eligibility", 500)->nullable();
-            $table->string("course_eligibility_en", 500)->nullable();
-            $table->string("course_cover_image")->nullable();
-            $table->unsignedInteger("course_duration")->default(30);
-            $table->unsignedFloat("cost", 8, 2)->default(0.0);
-            $table->unsignedInteger('overall_rating')->default(0);
-            $table->unsignedInteger('test_count')->default(1);
+            $table->unsignedInteger("course_duration")->default(0);
             $table->boolean('is_published')->default(false);
-            //$table->foreignId('trainer_id')->nullable()->constrained("trainer")->onUpdate("cascade")->onDelete("set null");
-           $table->unsignedBigInteger('created_by')->nullable();
+            $table->unsignedBigInteger('created_by')->nullable();
             $table->unsignedBigInteger('updated_by')->nullable();
             $table->unsignedTinyInteger("row_status")->default(1);
+            $table->foreignId('trainer_id')->nullable()
+                ->constrained('trainers')
+                ->cascadeOnUpdate()
+                ->nullOnDelete();
             $table->softDeletes();
             $table->timestamps();
 

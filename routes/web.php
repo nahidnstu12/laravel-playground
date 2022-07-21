@@ -72,3 +72,12 @@ Route::prefix('admin')->name('admin.')
                 Route::resource('jobs',\App\Http\Controllers\JobController::class);
             });
     });
+Route::get('/eq', [\App\Http\Controllers\PractiseController::class, 'collection_test']);
+
+// Course Routes
+Route::get('/courses', [\App\Http\Controllers\CourseInfoController::class, 'get_courses'])->name('course.show.table');
+Route::get('/courses/{course}', [\App\Http\Controllers\CourseInfoController::class, 'show'])->name('course.show.single');
+
+// Course Enrolements Routes
+Route::get('/enrolements', [\App\Http\Controllers\CourseInfoController::class, 'get_enrolements'])->name('enrolements.show.table');
+//Route::get('/enrolements/{student}', [\App\Http\Controllers\CourseInfoController::class, 'show'])->name('enrolements.show.single');

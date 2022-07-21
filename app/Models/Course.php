@@ -5,6 +5,8 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Course extends Model
@@ -14,9 +16,20 @@ class Course extends Model
     use softDeletes;
     use HasFactory;
 
-    protected  $guarded = BaseModel::COMMON_GUARDED_FIELDS_ONLY_SOFT_DELETE;
-    public  function  trainer():BelongsTo{
+
+    public  function  trainer():BelongsTo
+    {
         return $this->belongsTo(Trainer::class);
+    }
+
+    public  function  courseChapters():HasMany
+    {
+        return $this->hasMany(CourseChapter::class);
+    }
+
+    public function students():BelongsToMany
+    {
+        return $this->belongsToMany(Student::class, 'course_enrolements', 'course_id', 'student_id')->withPivot('tsp_approval', 'enrolment_date')->withTimestamps();
     }
 
 }
