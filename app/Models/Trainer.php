@@ -15,6 +15,8 @@ class Trainer extends Model
     use HasFactory;
     protected $guarded = ['id']; //why do this?
     protected $casts = []; //why do this?
+    protected $fillable = ['name'];
+
 
     public function  courses():HasMany{
         return $this->hasMany(Course::class);

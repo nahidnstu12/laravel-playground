@@ -15,7 +15,7 @@ class Course extends Model
     protected $table = 'courses';
     use softDeletes;
     use HasFactory;
-
+    protected $fillable = ['is_published', 'course_title', 'course_duration'];
 
     public  function  trainer():BelongsTo
     {

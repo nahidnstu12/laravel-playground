@@ -18,12 +18,14 @@
             <tr>
                 <th scope="row">{{$key+1}}</th>
                 <td>{{ $course->course_title }}</td>
-                <td>{{ $course->course_duration }}</td>
+                <td class="text-center">{{ $course->course_duration }}</td>
                 <td>{{ Str::title($course->trainer->name) }}</td>
-                <td>{{ "count student" }}</td>
+                <td class="text-center">{{ $course->students->count() }}</td>
                 <td>
-                    <button class="btn btn-outline-primary">Edit</button>
-                    <button class="btn btn-outline-success">Active</button>
+                    <a class="btn btn-outline-primary" href={{route('course.show.single', $course->id) }}>View</a>
+                    {{-- @if($course->is_published == 0) --}}
+                    <a href="{{$course->is_published == 0 ? route('approve.course', ['course'=> $course->id, 'type'=> 'approve']) : route('approve.course', ['course'=> $course->id, 'type'=> 'inapprove'])}}" class="btn {{$course->is_published == 0 ? 'btn-outline-success' : 'btn-outline-warning'}}" role="button">{{ $course->is_published == 0 ? "Activate" : "Inactivate"}}</a>
+                   
                 </td>
             </tr>
         @empty

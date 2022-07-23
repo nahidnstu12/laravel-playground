@@ -12,6 +12,8 @@ class CourseEnrolement extends Pivot
 {
     use HasFactory;
     protected $table = 'course_enrolements';
+    protected $fillable = ['enrolment_date'];
+
     
     public function student(): HasMany
     {

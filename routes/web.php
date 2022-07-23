@@ -77,6 +77,7 @@ Route::get('/eq', [\App\Http\Controllers\PractiseController::class, 'collection_
 // Course Routes
 Route::get('/courses', [\App\Http\Controllers\CourseInfoController::class, 'get_courses'])->name('course.show.table');
 Route::get('/courses/{course}', [\App\Http\Controllers\CourseInfoController::class, 'show'])->name('course.show.single');
+Route::get('/approve-course/{course}/{type}', [\App\Http\Controllers\CourseInfoController::class, 'approve_course'])->name('approve.course');
 
 // Course Enrolements Routes
 Route::get('/enrolements', [\App\Http\Controllers\CourseInfoController::class, 'get_enrolements'])->name('enrolements.show.table');
