@@ -14,10 +14,25 @@ class CourseEnrolement extends Pivot
     protected $table = 'course_enrolements';
     protected $fillable = ['enrolment_date'];
 
-    
-    public function student(): HasMany
+    public const ENROLEMENT_STATUS = [
+        'Pending' => 0,
+        'Approve' => 1,
+        'Reject' => 2
+    ];
+
+    public static function enrolementStatus(): array
     {
-        return $this->hasMany(Student::class, "student_id", "id");
+        return [
+            self::ENROLEMENT_STATUS['Pending'] => 'Pending',
+            self::ENROLEMENT_STATUS['Approve'] => 'Approve',
+            self::ENROLEMENT_STATUS['Reject'] => 'Reject',
+        ];
+    }
+
+    public function student(): BelongsTo
+    {
+//        return $this->hasMany(Student::class, "student_id", "id");
+        return $this->belongsTo(Student::class,"student_id", "id");
     }
 
     public function course(): BelongsTo

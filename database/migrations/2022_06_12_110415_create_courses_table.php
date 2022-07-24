@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->string("course_title", 500)->nullable();
             $table->unsignedInteger("course_duration")->default(0);
-            $table->boolean('is_published')->default(false);
+            $table->boolean('is_published')->default(false)->comment('1=>approve,0=reject>');
             $table->unsignedBigInteger('created_by')->nullable();
             $table->unsignedBigInteger('updated_by')->nullable();
             $table->unsignedTinyInteger("row_status")->default(1);

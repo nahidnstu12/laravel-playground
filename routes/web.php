@@ -75,10 +75,16 @@ Route::prefix('admin')->name('admin.')
 Route::get('/eq', [\App\Http\Controllers\PractiseController::class, 'collection_test']);
 
 // Course Routes
-Route::get('/courses', [\App\Http\Controllers\CourseInfoController::class, 'get_courses'])->name('course.show.table');
-Route::get('/courses/{course}', [\App\Http\Controllers\CourseInfoController::class, 'show'])->name('course.show.single');
-Route::get('/approve-course/{course}/{type}', [\App\Http\Controllers\CourseInfoController::class, 'approve_course'])->name('approve.course');
+Route::get('/courses', [\App\Http\Controllers\CourseInfoController::class, 'get_courses'])
+    ->name('course.show.table');
+Route::get('/courses/{course}', [\App\Http\Controllers\CourseInfoController::class, 'show'])
+    ->name('course.show.single');
+Route::get('/approve-course/{course}/{type}', [\App\Http\Controllers\CourseInfoController::class, 'approve_course'])
+    ->name('approve.course');
 
 // Course Enrolements Routes
-Route::get('/enrolements', [\App\Http\Controllers\CourseInfoController::class, 'get_enrolements'])->name('enrolements.show.table');
+Route::get('/enrolements', [\App\Http\Controllers\CourseInfoController::class, 'get_enrolements'])
+    ->name('enrolements.show.table');
+Route::get('/enrolements/{student}/{status}', [\App\Http\Controllers\CourseInfoController::class, 'approve_enrolement'])
+    ->name('approve.enrolement');
 //Route::get('/enrolements/{student}', [\App\Http\Controllers\CourseInfoController::class, 'show'])->name('enrolements.show.single');
