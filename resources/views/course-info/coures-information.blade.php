@@ -1,6 +1,9 @@
 @extends('layout.app')
 
+@include('layout.course-nav')
+
 @section('content')
+<div class="container my-5">
     <h1 class="text-primary mb-5">Course Information</h1>
     <table class="table table-striped">
         <thead>
@@ -17,7 +20,7 @@
         @forelse($courses as $key =>$course)
             <tr>
                 <th scope="row">{{$key+1}}</th>
-                <td>{{ $course->course_title }}</td>
+                <td>{{ Str::title($course->course_title) }}</td>
                 <td class="text-center">{{ $course->course_duration }}</td>
                 <td>{{ Str::title($course->trainer->name) }}</td>
                 <td class="text-center">{{ $course->students->count() }}</td>
@@ -35,4 +38,5 @@
 
         </tbody>
     </table>
+</div>
 @endsection
