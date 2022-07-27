@@ -24,7 +24,7 @@
             <td class="text-center">{{ Carbon\Carbon::parse($student->enrolment_date)->diffForHumans() }}</td>
             <td class="text-center">{{ Str::title($student->course->trainer->name) }}</td>
             <td>
-                <select class="form-control" id="enrolement_status" name="enrolement_status" >
+                <select class="form-control enrolement_status"  name="enrolement_status" data-id="{{ $student->student_id}}" data-course-id="{{$student->course_id}}">
 
                     @foreach(\App\Models\CourseEnrolement::enrolementStatus() as $key => $value)
                         <option value="{{ $key }}" {{ $key == $student->tsp_approval ? 'selected' : '' }}>{{ $value }}</option>
@@ -47,19 +47,21 @@
 @push('js')
 <script>
     $(document).ready(function(){
-        // $('h1').click(function(){
-        //     console.log("clik")
-        // })
-        $('#enrolement_status').change(function(){
+      
+        $('.enrolement_status').change(function(){
 
-            // Department id
             var id = $(this).val();
-            $.ajax({
-           url:{{ route('approve.enrolement', [])}}
-           type: 'get',
-           dataType: 'json',
-           success: function(response){
+            var std = $(this).attr('data-id')
+            var ctd = $(this).attr('data-course-id')
 
+            console.log({id, std, ctd})
+            $.ajax({
+           url:"{{ route('approve.enrolement')}}",
+           method: 'post',
+           dataType: 'json',
+           data:{ student_id:std, status: id, course_id: ctd},
+           success: function(response){
+           console.log(response)
            }
         })
            

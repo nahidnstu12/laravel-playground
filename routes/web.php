@@ -85,6 +85,6 @@ Route::get('/approve-course/{course}/{type}', [\App\Http\Controllers\CourseInfoC
 // Course Enrolements Routes
 Route::get('/enrolements', [\App\Http\Controllers\CourseInfoController::class, 'get_enrolements'])
     ->name('enrolements.show.table');
-Route::get('/enrolements/{student}/{status}', [\App\Http\Controllers\CourseInfoController::class, 'approve_enrolement'])
+Route::post('/enrolements/update', [\App\Http\Controllers\CourseInfoController::class, 'approve_enrolement'])
     ->name('approve.enrolement');
 //Route::get('/enrolements/{student}', [\App\Http\Controllers\CourseInfoController::class, 'show'])->name('enrolements.show.single');
