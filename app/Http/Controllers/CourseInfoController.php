@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Course;
 use App\Models\CourseEnrolement;
 use App\Models\Student;
+use App\Models\Trainer;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
 
@@ -34,27 +35,25 @@ class CourseInfoController extends Controller
 
     public function show(Course $course):View
     {
-        $course = Course::with('courseChapters')->get();
-        return view(self::PATH . 'single-course');
+        $course = Course::with('courseChapters', 'courseLessons', 'trainer')->where('id', $course->id)->first();
+        $anotherCourse = Course::whereNot('id', $course->id)->where('trainer_id', $course->trainer_id)->get();
+        // dd($anotherCourse);
+        return view(self::PATH . 'single-course', compact('course', 'anotherCourse'));
     }
 
     //course enrolements
     public function get_enrolements():View
     {
-        $students = CourseEnrolement::with( 'course', 'student')->get();
-        $courses = Course::with('trainer')->get();
-        return view(self::PATH . 'course-enrolements', compact('students'));
+        $enrolements = CourseEnrolement::with( 'course', 'student')->get();
+       
+        return view(self::PATH . 'course-enrolements', compact('enrolements'));
     }
 
     public function approve_enrolement(Request $request)
     {
         // $student_id = $request->student_id;
-        $student = CourseEnrolement::where('student_id', $request->student_id)->where('course_id', $request->course_id)->update(['tsp_approval'=> $request->status]);
-       // $student->update(['tsp_approval'=> $request->status]);
-        return $student;
-        // $student->tsp_approval = $request->status;
-        // $student->save();
-
-        return response('successfully changed');
+        CourseEnrolement::where('student_id', $request->student_id)->where('course_id', $request->course_id)->update(['tsp_approval'=> $request->status]);
+      
+        return response()->json(['msg'=>'successfully changed']);
     }
 }

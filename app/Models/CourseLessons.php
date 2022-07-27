@@ -18,4 +18,5 @@ class CourseLessons extends Model
     public function  courseChapter():BelongsTo{
         return $this->belongsTo(CourseChapter::class);
     }
+    
 }

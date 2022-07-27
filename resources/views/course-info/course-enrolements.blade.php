@@ -16,18 +16,18 @@
         </tr>
         </thead>
         <tbody>
-        @forelse($students as $key=>$student)
+        @forelse($enrolements as $key=>$enrolements)
         <tr>
             <th scope="row">{{ $key+1 }}</th>
-            <td class="text-center">{{  Str::title($student->course->course_title) }}</td>
-            <td class="text-center">{{  Str::title($student->student->name) }}</td>
-            <td class="text-center">{{ Carbon\Carbon::parse($student->enrolment_date)->diffForHumans() }}</td>
-            <td class="text-center">{{ Str::title($student->course->trainer->name) }}</td>
+            <td class="text-center">{{  Str::title($enrolements->course->course_title) }}</td>
+            <td class="text-center">{{  Str::title($enrolements->student->name) }}</td>
+            <td class="text-center">{{ Carbon\Carbon::parse($enrolements->enrolment_date)->diffForHumans() }}</td>
+            <td class="text-center">{{ Str::title($enrolements->course->trainer->name) }}</td>
             <td>
-                <select class="form-control enrolement_status"  name="enrolement_status" data-id="{{ $student->student_id}}" data-course-id="{{$student->course_id}}">
+                <select class="form-control enrolement_status"  name="enrolement_status" data-id="{{ $enrolements->student_id}}" data-course-id="{{$enrolements->course_id}}">
 
                     @foreach(\App\Models\CourseEnrolement::enrolementStatus() as $key => $value)
-                        <option value="{{ $key }}" {{ $key == $student->tsp_approval ? 'selected' : '' }}>{{ $value }}</option>
+                        <option value="{{ $key }}" {{ $key == $enrolements->tsp_approval ? 'selected' : '' }}>{{ $value }}</option>
                     @endforeach
 
                 </select>
@@ -61,7 +61,7 @@
            dataType: 'json',
            data:{ student_id:std, status: id, course_id: ctd},
            success: function(response){
-           console.log(response)
+                console.log(response)
            }
         })
            
