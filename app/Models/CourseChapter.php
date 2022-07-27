@@ -10,6 +10,8 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 class CourseChapter extends Model
 {
     use HasFactory;
+    protected $fillable = ['chapter_title'];
+
     public function  course():BelongsTo{
         return $this->belongsTo(Course::class);
     }

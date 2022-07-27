@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasManyThrough;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Course extends Model
@@ -15,7 +16,7 @@ class Course extends Model
     protected $table = 'courses';
     use softDeletes;
     use HasFactory;
-
+    protected $fillable = ['is_published', 'course_title', 'course_duration'];
 
     public  function  trainer():BelongsTo
     {
@@ -30,6 +31,10 @@ class Course extends Model
     public function students():BelongsToMany
     {
         return $this->belongsToMany(Student::class, 'course_enrolements', 'course_id', 'student_id')->withPivot('tsp_approval', 'enrolment_date')->withTimestamps();
+    }
+
+    public function courseLessons():HasManyThrough{
+        return $this->hasManyThrough(CourseLessons::class, CourseChapter::class);
     }
 
 }

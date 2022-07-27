@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Course;
+use App\Models\CourseEnrolement;
+use App\Models\Student;
+use App\Models\Trainer;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
 
@@ -15,14 +18,42 @@ class CourseInfoController extends Controller
 //        ->dd();
         return view(self::PATH . 'coures-information', compact('courses'));
     }
-    public function show():View
+    public function approve_course(Course $course, $type)
     {
-        return view(self::PATH . 'single-course');
+        if($type == 'approve'){
+            $course->update(['is_published'=> 1]);
+            $msg = "Course Approved";
+
+        }else if($type == 'inapprove'){
+            $course->update(['is_published'=> 0]);
+            $msg = "Course Rejected";
+        }
+        return redirect()->back()->with([
+            'message' => $msg
+        ]);
+    }
+
+    public function show(Course $course):View
+    {
+        $course = Course::with('courseChapters', 'courseLessons', 'trainer')->where('id', $course->id)->first();
+        $anotherCourse = Course::whereNot('id', $course->id)->where('trainer_id', $course->trainer_id)->get();
+        // dd($anotherCourse);
+        return view(self::PATH . 'single-course', compact('course', 'anotherCourse'));
     }
 
     //course enrolements
     public function get_enrolements():View
     {
-        return view(self::PATH . 'course-enrolements');
+        $enrolements = CourseEnrolement::with( 'course', 'student')->get();
+       
+        return view(self::PATH . 'course-enrolements', compact('enrolements'));
+    }
+
+    public function approve_enrolement(Request $request)
+    {
+        // $student_id = $request->student_id;
+        CourseEnrolement::where('student_id', $request->student_id)->where('course_id', $request->course_id)->update(['tsp_approval'=> $request->status]);
+      
+        return response()->json(['msg'=>'successfully changed']);
     }
 }

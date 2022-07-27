@@ -25,7 +25,7 @@ return new class extends Migration
                 ->constrained('courses')
                 ->cascadeOnUpdate()
                 ->nullOnDelete();
-            $table->boolean('tsp_approval')->default(false);
+            $table->tinyInteger('tsp_approval')->default(0)->comment('0=>pending,1=>approved,2=>reject');
             $table->timestamp('enrolment_date')->default(now());
             $table->dateTime('complete_date')->nullable();
             $table->timestamps();
