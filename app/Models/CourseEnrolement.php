@@ -12,7 +12,7 @@ class CourseEnrolement extends Pivot
 {
     use HasFactory;
     protected $table = 'course_enrolements';
-    protected $fillable = ['enrolment_date'];
+    protected $fillable = ['enrolment_date', 'tsp_approval'];
 
     public const ENROLEMENT_STATUS = [
         'Pending' => 0,

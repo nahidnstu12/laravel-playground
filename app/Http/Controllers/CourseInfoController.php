@@ -34,7 +34,7 @@ class CourseInfoController extends Controller
 
     public function show(Course $course):View
     {
-        $course = Course::with('courseChapters')->get()->dd();
+        $course = Course::with('courseChapters')->get();
         return view(self::PATH . 'single-course');
     }
 
@@ -46,8 +46,15 @@ class CourseInfoController extends Controller
         return view(self::PATH . 'course-enrolements', compact('students'));
     }
 
-    public function approve_enrolement(Student $student, $type)
+    public function approve_enrolement(Request $request)
     {
+        // $student_id = $request->student_id;
+        $student = CourseEnrolement::where('student_id', $request->student_id)->where('course_id', $request->course_id)->update(['tsp_approval'=> $request->status]);
+       // $student->update(['tsp_approval'=> $request->status]);
+        return $student;
+        // $student->tsp_approval = $request->status;
+        // $student->save();
 
+        return response('successfully changed');
     }
 }
