@@ -37,7 +37,7 @@
         </div>
     </div>
     </div>
-    @empty
+@empty
     <h1>No Chapter Added</h1>
     @endforelse
     </div>
@@ -46,21 +46,28 @@
 
     <div class="mt-5">
         <h5 class="my-3">{{ Str::title($course->trainer->name) }} Another Course</h5>
-       @forelse ($anotherCourse as $course)
-       <div class="card" style="width: 18rem;">
-        <div class="card-body">
-            <h5 class="card-title">{{ $course->course_title}}</h5>
-            <h6 class="card-subtitle mb-2 text-muted">{{ $course->course_duration}} Hours</h6>
-            <p class="card-text">{{ $course->course_description ?? "Some quick example text to build on the card title and make up the bulk of the card's
-              content."}}</p>
-            <a href="{{ route('course.show.single', $course->id)}}" class="card-link">View Course</a>
-           
+        <div class="d-flex">
+            @forelse ($anotherCourse as $course)
+                <div class="card mr-3" style="width: 18rem;">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ $course->course_title }}</h5>
+                        <h6 class="card-subtitle mb-2 text-muted">{{ $course->course_duration }} Hours</h6>
+                        <p class="card-text">
+                            {{ $course->course_description ??
+                                "Some quick example text to build on the card title and make up the bulk of the card's
+                                          content." }}
+                        </p>
+                        <a href="{{ route('course.show.single', $course->id) }}" class="card-link">View Course</a>
+
+                    </div>
+                </div>
+
+            @empty
+            @endforelse
         </div>
-    </div>
-       @empty
-           
-       @endforelse
     </div>
     </div>
 
 @endsection
+
+
