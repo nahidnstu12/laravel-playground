@@ -6,7 +6,7 @@
 <div class="container my-5">
     <div class="d-flex justify-content-between">
         <h1 class="text-primary mb-5">Course Information</h1>
-        <button class="btn btn-outline-primary" data-toggle="modal" data-target="#exampleModal" style="align-self: center">Add Course</button>
+        <a class="btn btn-outline-primary" href="{{ route('course.create')}}" style="align-self: center">Add Course</a>
     </div>
   
     <table class="table table-striped">
@@ -54,7 +54,33 @@
           </button>
         </div>
         <div class="modal-body">
-          ...
+          <form>
+            <div class="row">
+              <div class="col-6 mb-3">
+                <input type="text" class="form-control" placeholder="Course Name">
+              </div>
+              <div class="col-6 mb-3">
+              <select class="custom-select">
+                <option>Trainer Name</option>
+                <option value="1">One</option>
+                <option value="2">Two</option>
+                <option value="3">Three</option>
+              </select>
+              </div>
+              <div class="col-12 mb-3">
+                <button class="btn btn-outline-primary">Add Chapter</button>
+              </div>
+              
+
+              <div class="col-6  mb-3">
+                <input type="text" class="form-control" placeholder="Module Name">
+              </div>
+              <div class="col-6  mb-3">
+                <button class="btn btn-outline-primary">Add Lessons</button>
+              </div>
+
+            </div>
+          </form>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>

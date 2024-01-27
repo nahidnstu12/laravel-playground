@@ -41,6 +41,16 @@ class CourseInfoController extends Controller
         return view(self::PATH . 'single-course', compact('course', 'anotherCourse'));
     }
 
+    // Course Create
+    public function create_course_page(){
+        $trainers = Trainer::get();
+        return view(self::PATH . 'course-add', compact('trainers'));
+    }
+    public function create_course_store(Request $request){
+       
+        // dd($request->all());
+        return "okk";
+    }
     //course enrolements
     public function get_enrolements():View
     {
